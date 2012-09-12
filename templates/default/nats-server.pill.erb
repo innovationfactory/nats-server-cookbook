@@ -1,10 +1,11 @@
 Bluepill.application("nats-server") do |app|
   app.process("nats-server") do |process|
     process.environment = { "PATH" => "<%= @path %>:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" }
-    process.start_command      = "<%= @binary %> -T -d -c <%= @config_file %>"
+    process.start_command      = "<%= @binary %> -T -c <%= @config_file %>"
     process.pid_file           = "<%= @pid_file %>"
     process.start_grace_time   = 15.seconds
     process.stop_grace_time    = 15.seconds
     process.restart_grace_time = 15.seconds
+    process.daemonize = true
   end
 end
