@@ -1,5 +1,5 @@
 ---
-net: <%= node[:nats_server][:host] %>
+net: <%= node[:ipaddress] %>
 port: <%= node[:nats_server][:port] %>
 
 pid_file: <%= node[:nats_server][:pid_file] %>
