@@ -1,16 +1,6 @@
 include_attribute "cloudfoundry-common"
 
-# Nats will bind to this host.
-default[:nats_server][:host]       = "0.0.0.0"
-
-# Nats will bind to this port.
-default[:nats_server][:port]       = default[:cloudfoundry_common][:nats_server][:port]
-
-# Clients will connect to nats as this user.
-default[:nats_server][:user]       = "nats"
-
-# Clients will connect to nats with this password.
-default[:nats_server][:password]   = "nats"
+# Port, user and password are set in cloudfoundry_common.
 
 # Where to write Nats's pid.
 default[:nats_server][:pid_file]   = File.join(node[:cloudfoundry_common][:pid_dir], "nats-server.pid")
