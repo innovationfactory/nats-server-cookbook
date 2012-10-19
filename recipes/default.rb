@@ -18,15 +18,15 @@
 #
 include_recipe 'cloudfoundry-common'
 
-gem_binaries_path = File.join(rbenv_root, "versions", node.cloudfoundry_common.ruby_1_9_2_version, "bin")
+gem_binaries_path = File.join(rbenv_root, "versions", node['cloudfoundry_common']['ruby_1_9_2_version'], "bin")
 
 rbenv_gem "nats" do
-  ruby_version node.cloudfoundry_common.ruby_1_9_2_version
+  ruby_version node['cloudfoundry_common']['ruby_1_9_2_version']
 end
 
 cloudfoundry_component "nats-server" do
   component_name "nats-server"
-  pid_file     node.nats_server.pid_file
-  log_file     node.nats_server.log_file
+  pid_file     node['nats_server']['pid_file']
+  log_file     node['nats_server']['log_file']
   binary       File.join(gem_binaries_path, "nats-server")
 end
